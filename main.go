@@ -37,7 +37,7 @@ type HookConfig struct {
 	DefaultEntity string
 	DefaultSource string
 	// DefaultPriority will fallback to P3 if it's not set
-	// It can be overriden on runtime with the Logrus field `ogh:priority`
+	// It can be overridden on runtime with the Logrus field `ogh:priority`
 	DefaultPriority alertsv2.Priority
 }
 

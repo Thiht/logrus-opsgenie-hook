@@ -1,4 +1,4 @@
-# logrus-opsgenie-hook
+# logrus-opsgenie-hook [![GoDoc](https://godoc.org/github.com/Thiht/logrus-opsgenie-hook?status.svg)](https://godoc.org/github.com/Thiht/logrus-opsgenie-hook) [![Go Report Card](https://goreportcard.com/badge/github.com/Thiht/logrus-opsgenie-hook)](https://goreportcard.com/report/github.com/Thiht/logrus-opsgenie-hook)
 
 logrus-opsgenie-hook is a [Logrus](https://github.com/sirupsen/logrus) hook used to push alerts on OpsGenie.
 
@@ -7,21 +7,24 @@ The goal is to be more flexible than [JackFazackerley/logrus-opsgenie-hook](http
 ## Quick start
 
 ```go
+package main
+
 import (
-  "github.com/opsgenie/opsgenie-go-sdk/alertsv2"
-  "github.com/sirupsen/logrus"
-  "github.com/Thiht/logrus-opsgenie-hook"
+	opsgenie "github.com/Thiht/logrus-opsgenie-hook"
+	"github.com/opsgenie/opsgenie-go-sdk/alertsv2"
+	log "github.com/sirupsen/logrus"
 )
 
 func main() {
-  opsgenieHook, _ := opsgenie.NewHook("my-api-token", opsgenie.EndpointEU, opsgenie.HookConfig{
-    DefaultTeams: []alertsv2.Team{
-      { Name: "my-team-name" },
-    },
-    DefaultSource: "my-app",
-    DefaultPriority: alertsv2.P1,
-  })
+	opsgenieHook, _ := opsgenie.NewHook("my-api-token", opsgenie.EndpointEU, opsgenie.HookConfig{
+		DefaultTeams: []alertsv2.Team{
+			{Name: "my-team-name"},
+		},
+		DefaultSource:   "my-app",
+		DefaultPriority: alertsv2.P1,
+	})
 
-  log.AddHook(opsgenieHook)
+	log.AddHook(opsgenieHook)
 }
+
 ```
